@@ -30,9 +30,13 @@ public class KnightsTour{
 				String ans = "\n";
 				//build your knights tour here...
 				
-				for(int num=0;num<board.length*board[0].length;num++){
+				for(int rows=0; rows<board.length; rows++){
+				    for(int cols=0; cols<board.length; cols++){
+					ans+=" ,"+board[rows][cols]+"\n";
+				    }
 				}
-return hide + go(0,0) + ans + "\n" + show;
+
+				return hide + go(0,0) + ans + "\n" + show;
     }
 
     public KnightsTour(int size){
@@ -45,13 +49,26 @@ return hide + go(0,0) + ans + "\n" + show;
     }
 
     public void solve(int startx, int starty){
-				
+	//huh
+	solve(startx,starty, 0);
+	//currentMoveNumber	
     }
 
 
 		
     public boolean solve(int x,int y,int currentMoveNumber){
-				System.out.println(this);
+	if(currentMoveNumber<board.length*board[board.length].length){
+	    return true;}
+	if(x>board.length||x<0){
+	    solve(0,y,currentMoveNumber);
+	}
+	if(y>board.length||y<0){
+	    solve(x,0,currentMoveNumber);
+	}
+	
+    		
+
+    System.out.println(this);
 				wait(20);
 				
 				return false;
