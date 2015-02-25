@@ -18,7 +18,15 @@ public class KnightsTour{
 				return ("\033[" + x + ";" + y + "H");
     }
  
-    public void wait(int millis){
+  
+
+    public String name(){
+	return "chowdhury.labiba";
+    }
+
+
+
+  public void wait(int millis){
 				try {
 						Thread.sleep(millis);
 				}
@@ -32,8 +40,11 @@ public class KnightsTour{
 				
 				for(int rows=0; rows<board.length; rows++){
 				    for(int cols=0; cols<board.length; cols++){
-					ans+=" ,"+board[rows][cols]+"\n";
+					ans+=" ";					
+					ans+=board[rows][cols];
+
 				    }
+				    ans+="\n";
 				}
 
 				return hide + go(0,0) + ans + "\n" + show;
@@ -49,30 +60,44 @@ public class KnightsTour{
     }
 
     public void solve(int startx, int starty){
-	//huh
-	solve(startx,starty, 0);
-	//currentMoveNumber	
-    }
+	solve(startx,starty,0); }
 
 
 		
     public boolean solve(int x,int y,int currentMoveNumber){
-	if(currentMoveNumber<board.length*board[board.length].length){
+
+
+	if (currentMoveNumber>board.length*board.length){
 	    return true;}
-	if(x>board.length||x<0){
-	    solve(0,y,currentMoveNumber);
-	}
-	if(y>board.length||y<0){
-	    solve(x,0,currentMoveNumber);
-	}
-	
-    		
 
-    System.out.println(this);
-				wait(20);
-				
-				return false;
+       
+	if(board[x+2][y+1]==0){
+		board[x+2][y+1]=currentMoveNumber;
+		solve(x+2,y+1,currentMoveNumber+1);
+	    }
+	if(board[x-2][y+1]==0){
+		board[x-2][y+1]=currentMoveNumber;
+		solve(x-2,y+1,currentMoveNumber+1);
+	    }
+	if(board[x+2][y-1]==0){
+	    board[x+2][y-1]=currentMoveNumber;
+	    solve(x+2,y-1,currentMoveNumber+1);}
+	if(board[x-2][y-1]==0){
+	    board[x-2][y-1]=currentMoveNumber;
+	    solve(x-2,y-1,currentMoveNumber+1);}
+	if(board[x+1][y+2]==0){
+	    board[x+1][y+2]=currentMoveNumber;
+	    solve(x+1,y+2,currentMoveNumber+1);}
+	if(board[x-1][y+2]==0){
+	    board[x-1][y+2]=currentMoveNumber;
+	    solve(x-1,y+2,currentMoveNumber+1);}
+	if(board[x+1][y-2]==0){
+	    board[x+1][y-2]=currentMoveNumber;
+	    solve(x+1,y-2,currentMoveNumber+1);}
+	if(board[x-1][y-2]==0){
+	    board[x-1][y-2]=currentMoveNumber;
+	    solve(x-1,y-2,currentMoveNumber+1);}
+    				
+	return false;
     }
-
-
 }
