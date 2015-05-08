@@ -49,13 +49,15 @@ public class BTree<E> {
       added to randomly.
       ====================*/
     private void add( TreeNode<E> curr, TreeNode<E> bn ) {
-	if(){curr.add(bn);
+	if(curr.hasNext()){curr.add(bn);
 	  }
+	//does  this even make sense
 	else{ 
+	    //random haw
 	    
 	    
     }
-    
+    } 
     public void traverse( int mode) {
 	if ( mode == PRE_ORDER )
 	    preOrder( root );
@@ -100,7 +102,8 @@ public class BTree<E> {
       post-order Traversal    
       ====================*/
     public void postOrder( TreeNode<E> curr ) {
-    }
+    
+}
     
     /*======== public int getHeight()) ==========
       Inputs:   
@@ -129,6 +132,7 @@ public class BTree<E> {
       
       ====================*/
     public String getLevel( TreeNode<E> curr, int level, int currLevel ) {
+
 	return "";
     }
     
